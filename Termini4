@@ -26,7 +26,7 @@ Big Data : e una raccolta di enorme quantita di informazione o meglio di data.
 
 modello logico : e la descrizione di una relazione attraverso il simbolismo.
 
-MS SQL SERVER : in una tabella sql ci sono le colonne, poi i record/righe/tuple composto da tanti campi, infine un campo che e uguale a 1 informazione.
+MS SQL SERVER : in una tabella sql ci sono le colonne, poi i record/righe/tuple composto da tanti campi,un campo è uguale a una informazione.
 
 DDL : data definition language / linguaggio di definizione di data.
 
