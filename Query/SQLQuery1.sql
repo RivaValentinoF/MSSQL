@@ -6,3 +6,5 @@ CREATE TABLE Persone (
     Altezzainmetri decimal(3,2),
 	Pesoinettolitri varchar(6,3)
 );
+
+--Crea una tabella con le colonne es. Id
