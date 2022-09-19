@@ -1,0 +1,1 @@
+ DELETE FROM Persone WHERE ID= 0;
