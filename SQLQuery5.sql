@@ -1,1 +1,0 @@
-UPDATE Persone SET Nome= 'Valentino' WHERE Cognome='Riva'
