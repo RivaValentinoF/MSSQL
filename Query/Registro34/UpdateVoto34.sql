@@ -1,0 +1,1 @@
+Update Voto34 set Valorevoto=Valorevoto+1
