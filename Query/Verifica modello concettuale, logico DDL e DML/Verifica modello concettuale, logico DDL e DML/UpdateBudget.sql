@@ -1,0 +1,1 @@
+UPDATE Progetto SET Budget=Budget+((Budget/100)*10) WHERE Nomeprogetto='Esselunga – viale Suzzani'

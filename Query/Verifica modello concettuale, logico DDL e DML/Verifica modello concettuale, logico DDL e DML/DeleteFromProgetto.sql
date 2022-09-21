@@ -1,0 +1,1 @@
+DELETE FROM Progetto WHERE (Nomeprogetto='Deutsche Bank')

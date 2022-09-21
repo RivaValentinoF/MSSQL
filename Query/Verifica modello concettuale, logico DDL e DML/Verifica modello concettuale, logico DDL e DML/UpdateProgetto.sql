@@ -1,0 +1,1 @@
+UPDATE Progetto SET Nomeprogetto= 'Esselunga – viale Suzzani' WHERE Nomeprogetto='Esselunga'
