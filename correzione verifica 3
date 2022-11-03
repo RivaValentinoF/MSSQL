@@ -1,0 +1,114 @@
+1-Gradimento medio episodio ‘la scatola del bravo ragazzo’ della serie tv dahmer
+select avg(visualizza.valutazione) as gradimento_medio
+from episodio inner join serie_tv
+on episodio.id_serie=serie.serie_tv.id
+inner join visualizza
+on valuta.idepisodior= episodio.id
+where serie_tv.nome=’dahmer’
+and episodio.titolo=’la scatola del bravo ragazzo’
+
+2 modo 
+select avg(valutazione) from visualizza 
+where idepisodio= (select id from episodio where nome =’la scatola del bravo ragazzo’)
+and idserie=(select id fromserie where nome =’dahmer’))
+
+2-elenco delle serie tv con il numero dei episodi 
+select serie.nome ,count(*)
+from serie_tv inner join episodio
+on serie.di=episodio.idserie
+group by serie.id ,serie.nome,numero
+
+3-utenti che hanno guardato + di 100 episodi 
+select utente.nome,utente.cognome,count(*) as numero_episodi
+from utente inner join visualizza 
+on utende.id=visualizza.idutente
+group by utene.id,utente.nome,utente.cognome
+having count(*) >100
+order by numero_episodi desc 
+
+4-gli utenti che hanno guardato episodi di più di 10 serie diverse 
+select utene.id,utente.nome,utente.cognome as serie_viste
+from utente inner join visualizza 
+on utente.id=visualizza.idutente
+inner join episodio
+on episodio.id=visualizza.idepisodio
+inner join serie 
+on serie.id=episodio.idserie 
+group by utene.id,utente.nome,utente.cognome
+having count(serie.id)>10
+
+
+
+5-elenco dei utenti che nell'ultimo mese non hanno guardato la serie tv dahmer
+select *
+from utente where utente.id not in 
+(select utente.id from utente,episodio,serie 
+inner join visualizza 
+on utente.id=visualizza.idutente
+inner join episodio 
+on episodio.id=visualizza.idepisodio
+inner join serie 
+on serie.id = episodio.idserie
+where serie.nome = ‘dahmer’ 
+and *between visualizza.data between ‘2022-09-20’ and ‘2022-10-20’)
+– datediff (day visualizza.date,dateadd(dat,-30,getdate()))>0)
+– datediff(day,visualizza.data,getdate())<30)
+lavora sulla differenza dei day 
+6-avere l'elenco della serie di genere drammatico e fantascientifico ordinare in ordine alfabetico visualizzando prima le serie di fantascienza e poi quelle drammatiche 
+select  from serie 
+inner join appartiente
+on serie.id= appartiene.idserie
+inner join genere
+on genere.id=appartiene.idgenere
+where genere.nome=’drammatico’ or genere.nome=’fantascienza’
+– where genre.nome in (‘’drammatico’,fantascienza’)
+order by genere.nome desc ,serie.nome 
+
+7-avere l'elenco degli episodi (titolo e serie tv) in cui ha recitato flavio Nedina 
+select episodio.titolo,serie.nome from attore 
+inner join recita
+on atoore.id=recita.idattore
+inner join episodio
+on episodio.id=recita.idespisodio
+inner join serie
+on serie.id=episodio.idserie
+where attore.nome =’Flavio’ and attore.cognome =’Nedina’
+
+avere l'elenco delle serie in cui compare la parola ‘the’ all'inizio del nome della serie tv
+select * from serie
+where nome like ‘the %’
+
+8-avere il numero di utenti che hanno guardato nel settembre del 2022
+select count(*) as numero_utenti
+from utente
+inner join visualizza
+on.utente.id =visualizza.idutente
+where visualizza.data =between ‘2022-09-01’ and ‘2022-09-30’
+9-creare una tabella che rappresenta un 'entità 
+create table genere(
+id int identity(0,1)primary key,
+nome varchar(50)
+)
+
+
+
+
+10-creare una tabella che rappresenta una relazione
+create table appartiene(
+idserie int foreign key references serie (id),
+idgenere int foreign key references genere(id)
+)
+
+11-aggiungere il campo numero di telefono all’utente
+alter table utente 
+add telefono varchar(20)
+
+12-eliminare l’attributo sesso dall utente
+alter table utente 
+drop column sesso
+
+
+
+
+
+
